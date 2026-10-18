@@ -1,35 +1,20 @@
-# BUDS Matriculation Higher Secondary School — Website Prototype
+# BUDS Group of Schools — V2
 
-A responsive React + Vite public school website with Firebase Authentication and a protected Firestore announcements dashboard.
+Independent demonstration website, not an official school publication.
 
-**Important:** This is an independent prototype, not an official school website. Photos, copy, contact details, admission policies, logos, management information, and all institutional claims require authorization and verification before publication.
+## Run
+1. `npm install`
+2. Copy `.env.example` to `.env` and enter your own Firebase web app values. Never publish private service-account keys.
+3. `npm run dev`
+4. Open the local URL.
 
-## Run locally
+## Admin
+Enable Firebase Email/Password authentication. In Firestore create `admins/{AUTH_USER_UID}` with Boolean `enabled: true` via Firebase Console. Publish `firestore.rules` after reviewing it. Never allow users to create their own admin record.
 
-1. Install Node.js 20+.
-2. Run `npm install`.
-3. Run `npm run dev` and open the printed localhost address.
-4. The public site renders without Firebase configuration, using illustrative announcement content. The staff portal requires Firebase.
+Announcements are filtered for all institutions, Matriculation and CBSE. School identity, contact information, admission guidance and CBSE disclosure were drawn from https://budsschools.com/. The official gallery is linked rather than copying photographs of minors.
 
-## Set up Firebase admin
-
-1. Create a Firebase project and web app.
-2. Enable Authentication → Email/Password and Firestore Database.
-3. Copy `.env.example` to `.env` and fill in Firebase **web app** configuration values. These are public identifiers, not private service account secrets. Never put service account keys in the frontend.
-4. In Firebase Console → Firestore → Rules, deploy the content of `firestore.rules`.
-5. In Authentication, create an Email/Password user for an authorized school administrator.
-6. Copy the user's UID. In Firestore, manually create `admins/{UID}` with boolean field `enabled: true` using the Firebase Console. Only trusted project owners should be able to do this.
-7. Restart the dev server, open Staff Portal, and sign in. The admin can create, edit, and delete public announcements.
-
-## Deploy
-
-Run `npm run build`. Deploy the repository to Vercel as a Vite project; add the `VITE_FIREBASE_*` variables in Vercel Project Settings → Environment Variables. Do not deploy without reviewing the Firestore rules and securing admin access.
-
-## Current scope and next steps
-
-- Public: responsive Home, About, Academics, Campus Life, News, Admissions, Contact.
-- Admin: email/password sign-in, Firestore UID allowlist, announcements CRUD.
-- The enquiry form is explicitly **demo-only** and does not collect, transmit or store visitor details.
-- Campus imagery is illustrative CSS art, not authentic school photographs.
-- Extend the admin panel with moderated photo uploads, verified faculty profiles, admissions content and approved enquiry workflow after obtaining school permission.
-- Add accessibility review, content moderation, privacy notice, anti-spam protections, backups and verified bilingual content before public launch.
+## Notes
+- This starter does not submit admission applications or upload images.
+- School-specific administration roles are not implemented; approved admins can manage all announcements.
+- Get authorization from school management before presenting this as an official website.
+- Existing Firebase project values must be retained in your `.env`.
