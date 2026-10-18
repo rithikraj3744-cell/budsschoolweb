@@ -1,20 +1,17 @@
-# BUDS Group of Schools — V2
+# BUDS Group of Schools — Independent Website V3
 
-Independent demonstration website, not an official school publication.
+This version removes outbound navigation to budsschools.com. All school navigation, galleries, admissions, and contacts remain on this independent React website. The Google Maps link, telephone links, and email link intentionally open their respective services.
 
 ## Run
-1. `npm install`
-2. Copy `.env.example` to `.env` and enter your own Firebase web app values. Never publish private service-account keys.
-3. `npm run dev`
-4. Open the local URL.
+1. Copy `.env.example` to `.env` and enter your EXISTING Firebase credentials. Never commit `.env`.
+2. Run `npm install` and `npm run dev`.
+3. Run `npm run build` before deploying to Vercel.
 
-## Admin
-Enable Firebase Email/Password authentication. In Firestore create `admins/{AUTH_USER_UID}` with Boolean `enabled: true` via Firebase Console. Publish `firestore.rules` after reviewing it. Never allow users to create their own admin record.
+## Real photographs
+No images were scraped or misrepresented. Obtain approved original photographs from the school and put them in `public/images/`. In `src/main.jsx`, populate `albumPhotos` with paths, e.g. `{'Graduation Day':['/images/graduation-1.jpg']}`. The gallery then displays images inside the website. Photos of identifiable students require appropriate authorization and consent.
 
-Announcements are filtered for all institutions, Matriculation and CBSE. School identity, contact information, admission guidance and CBSE disclosure were drawn from https://budsschools.com/. The official gallery is linked rather than copying photographs of minors.
+## Firebase
+The existing Firebase authentication, administrator document check, announcements and Firestore rules are preserved. Existing `.env` is not included. The gallery is currently a local-content gallery, not an admin upload module.
 
 ## Notes
-- This starter does not submit admission applications or upload images.
-- School-specific administration roles are not implemented; approved admins can manage all announcements.
-- Get authorization from school management before presenting this as an official website.
-- Existing Firebase project values must be retained in your `.env`.
+The website is an independent prototype, not an official school publication. Confirm school-specific information before launch.
